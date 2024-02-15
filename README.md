@@ -1,4 +1,4 @@
-## `myinstants clone`
+## `luckyinstants`
 
 Clone do myinstants em Nuxtzin
 
