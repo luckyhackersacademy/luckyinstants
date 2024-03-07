@@ -4,6 +4,12 @@ export default defineNuxtConfig({
 
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "shadcn-nuxt"],
 
+  nitro: {
+    routeRules: {
+      "/api/**": { cors: true },
+    },
+  },
+
   shadcn: {
     /**
      * Prefix for all the imported component
