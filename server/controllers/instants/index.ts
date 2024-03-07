@@ -7,6 +7,7 @@ import {
   RECENT_URL,
   SEARCH_URL,
 } from "~/server/config/url";
+import slugify from "slugify";
 
 export function NewController(cheerio: CheerioAPI) {
   async function readall() {
@@ -26,6 +27,7 @@ export function NewController(cheerio: CheerioAPI) {
       const [, audioUrl] = audio.split("'");
 
       response.push({
+        id: slugify(title),
         title,
         audioUrl: `${BASE_URL}${audioUrl}`,
       });
@@ -51,6 +53,7 @@ export function NewController(cheerio: CheerioAPI) {
       const [, audioUrl] = audio.split("'");
 
       response.push({
+        id: slugify(title),
         title,
         audioUrl: `${BASE_URL}${audioUrl}`,
       });
@@ -76,6 +79,7 @@ export function NewController(cheerio: CheerioAPI) {
       const [, audioUrl] = audio.split("'");
 
       response.push({
+        id: slugify(title),
         title,
         audioUrl: `${BASE_URL}${audioUrl}`,
       });
@@ -103,6 +107,7 @@ export function NewController(cheerio: CheerioAPI) {
       const [, audioUrl] = audio.split("'");
 
       response.push({
+        id: slugify(title),
         title,
         audioUrl: `${BASE_URL}${audioUrl}`,
       });
