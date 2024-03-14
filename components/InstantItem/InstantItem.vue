@@ -4,6 +4,7 @@ import { Play, Pause } from "lucide-vue-next";
 import { Button } from "@/components/ui/button";
 
 const props = defineProps<{
+  id: string;
   title: string;
   audioUrl: string;
   isPlaying: boolean;
@@ -14,7 +15,7 @@ const emit = defineEmits<{
 }>();
 
 const togglePlayPause = () => {
-  emit("play", { title: props.title, audioUrl: props.audioUrl });
+  emit("play", { id: props.id, title: props.title, audioUrl: props.audioUrl });
 };
 </script>
 

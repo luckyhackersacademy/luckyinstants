@@ -5,11 +5,11 @@ useHead({
   title: "Todos os instants",
 });
 
-const { play, pause, isAudioTitlePlaying } = useAudioPlayer();
+const { play, pause, playing, isAudioPlaying } = useAudioPlayer();
 const { data: instants } = await useFetch<Instant[]>("/api/instants");
 
 const handlePlayAndPause = (instant: Instant) => {
-  if (isAudioTitlePlaying(instant.title)) {
+  if (isAudioPlaying(instant.id)) {
     pause();
     return;
   }
@@ -22,8 +22,9 @@ const handlePlayAndPause = (instant: Instant) => {
   <InstantItem
     v-for="instant in instants"
     class="my-2"
-    :is-playing="isAudioTitlePlaying(instant.title)"
+    :is-playing="playing && isAudioPlaying(instant.id)"
     :key="instant.title"
+    :id="instant.id"
     :title="instant.title"
     :audio-url="instant.audioUrl"
     @play="handlePlayAndPause"
