@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxtjs/google-fonts", "shadcn-nuxt"],
 
   nitro: {
+    experimental: {
+      openAPI: true,
+    },
     routeRules: {
       "/api/**": { cors: true },
     },
