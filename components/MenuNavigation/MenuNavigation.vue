@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Siren, HandMetal } from "lucide-vue-next";
 
-const { currentInstant, playing, progress, play, pause, isAudioPlaying } =
+const { currentInstant, playing, progress, play, pause, duration } =
   useAudioPlayer();
 </script>
 
@@ -39,6 +39,7 @@ const { currentInstant, playing, progress, play, pause, isAudioPlaying } =
       <MiniPlayer
         @play="play"
         @pause="pause"
+        :duration="duration"
         :progress="progress"
         :title="currentInstant.title"
         :is-playing="playing"

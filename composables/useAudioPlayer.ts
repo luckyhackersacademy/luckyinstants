@@ -3,6 +3,7 @@ import type { Instant } from "@/entities/Instant";
 const currentInstant = ref<Instant>();
 const audioRef = ref<HTMLAudioElement | null>(null);
 const progress = ref<number>(0);
+const duration = ref<number>(0);
 const playing = ref<boolean>(false);
 
 export function useAudioPlayer() {
@@ -37,6 +38,7 @@ export function useAudioPlayer() {
         return;
       }
 
+      duration.value = audioRef.value.duration;
       progress.value = Number(
         ((audioRef.value.currentTime / audioRef.value.duration) * 100).toFixed(
           0,
@@ -52,5 +54,6 @@ export function useAudioPlayer() {
     isAudioPlaying,
     progress,
     playing,
+    duration,
   };
 }

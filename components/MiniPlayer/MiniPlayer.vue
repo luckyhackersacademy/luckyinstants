@@ -7,6 +7,7 @@ import { watchEffect } from "vue";
 const props = defineProps<{
   title: string;
   progress: number;
+  duration: number;
   isPlaying: boolean;
 }>();
 
@@ -19,6 +20,11 @@ const currentProgress = ref<number[]>([props.progress]);
 
 watchEffect(() => {
   currentProgress.value = [props.progress];
+});
+
+// @TODO: better duration format
+const durationInMinutes = computed(() => {
+  return Math.floor(props.duration / 60);
 });
 
 const handleToogle = () => {
@@ -49,7 +55,12 @@ const handleToogle = () => {
           <Play v-else class="w-4 h-4 text-gray-200" />
         </Button>
       </span>
-      <Slider v-model="currentProgress" :max="100" :step="1" />
+
+      <div class="w-full flex justify-center items-center gap-2">
+        <span class="text-white text-sm">00:00</span>
+        <Slider v-model="currentProgress" :max="100" :step="1" />
+        <span class="text-white text-sm">{{ durationInMinutes }}</span>
+      </div>
     </div>
   </div>
 </template>
